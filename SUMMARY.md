@@ -4,4 +4,5 @@
 
 ## Contracts
 
+* [Flux App](contracts/flux-app.md)
 * [FluxReport](contracts/fluxreport.md)
