@@ -21,6 +21,48 @@ struct LoanPoolReport {
 function getLoanPoolReport() public view returns ([] memory pools)
 ```
 
+### getLoanPoolMeta
+
+Search market information and user loan info with given loan pool.
+
+```solidity
+struct MarketMeta {
+        // user info
+        uint256 userBorrowings;
+        uint256 userDeposits;
+        uint256 userUnderlyingAllowance;
+        uint256 userUnderlyingBalance;
+        uint256 userBorrowLimit;
+        uint256 userWithdrawLimit;
+        // token info
+        address underlying;
+        uint256 underlyingPrice;
+        //config
+        uint256 borrowCap;
+        uint256 reserveFactor;
+        uint256 maxinumLTVRatio;
+        // market data
+        uint256 ftokenSupply;
+        uint256 totalBorrows;
+        uint256 liquidity;
+        uint256 exchangeRate;
+        uint256 borrowAPY;
+        uint256 depositAPY;
+        uint256 depositDistributionFluxAPY;
+        uint256 borrowDistributionFluxAPY;
+        uint256 decimals;
+    }
+
+    /**
+      @notice search market information and user loan info with given market.
+      @dev user loan info is zero if `user` is empty.
+     */
+function getLoanPoolMeta(address mkt, address user) external view returns (MarketMeta memory meta) {
+    
+```
+
+
+
 ### getStakePoolReport
 
 Search all stake pool information.
@@ -39,4 +81,22 @@ struct StakePoolReport {
     }
 
 function getStakePoolReport() public view returns (StakePoolReport[])
+```
+
+### getAllStakeMeta
+
+Search all stake pool information and user stake info.
+
+```solidity
+struct StakeMeta {
+    address pool;
+    uint256 staked;
+    uint256 tokenAllownce;
+    uint256 tokenBalance;
+    address token;
+    uint8 tokenDecimals;
+    StakePoolReport poolMeta;
+}
+
+function getAllStakeMeta(address user) external view returns (StakeMeta[] memory pools)
 ```
