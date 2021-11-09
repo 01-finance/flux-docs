@@ -41,6 +41,7 @@ struct MarketMeta {
         uint256 borrowCap;
         uint256 reserveFactor;
         uint256 maxinumLTVRatio;
+        uint256 liquidationFactor;
         // market data
         uint256 ftokenSupply;
         uint256 totalBorrows;
