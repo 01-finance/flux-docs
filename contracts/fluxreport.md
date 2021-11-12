@@ -94,10 +94,21 @@ struct StakeMeta {
     uint256 staked;
     uint256 tokenAllownce;
     uint256 tokenBalance;
+    uint256 totalSupply;
     address token;
     uint8 tokenDecimals;
     StakePoolReport poolMeta;
 }
 
 function getAllStakeMeta(address user) external view returns (StakeMeta[] memory pools)
+```
+
+you can get user staked token amount:
+
+```
+var result =await  FluxReportContract.getAllStakeMeta(user);
+var pool0Info= result[0];
+var userToken0Staked =  pool0Info.staked/pool0Info.totalSupply * pool0Info.poolMeta.token0Staked;
+var userToken1Staked =  pool0Info.staked/pool0Info.totalSupply * pool0Info.poolMeta.token1Staked;
+
 ```
